@@ -1,0 +1,27 @@
+{
+  "name": "flip-a-little-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "connect": "^3.7.0",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "jest": "^29.5.0",
+    "jquery": "^1.11.0",
+    "mysql": "^2.18.1",
+    "querystring": "^0.2.1",
+    "require.js": "^1.0.0",
+    "serve-static": "^1.15.0",
+    "url": "^0.11.0"
+  }
+}

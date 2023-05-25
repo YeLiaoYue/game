@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .return {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            padding-right: 2px;
+            left: 15px;
+            top: 15px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 38px;
+            background-color: gray;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .ranking-list {
+            display: flex;
+            width: 300px;
+            height: 50px;
+            align-items: center;
+            justify-content: space-around;
+            color: green;
+        }
+
+        .button {
+            position: relative;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #000;
+            border-bottom: none;
+            box-sizing: border-box;
+        }
+
+        .active {
+            color: red;
+        }
+
+        .button:nth-child(2) {
+            border-left: none;
+            border-right: none;
+        }
+
+        .content-box {
+            width: 300px;
+            height: 270px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .list {
+            width: 300px;
+            height: 30px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #000;
+            border-width: 1px 0;
+            border-top: none;
+            box-sizing: border-box;
+        }
+
+        .list:nth-child(10) {
+            border-bottom: none;
+        }
+
+        .index {
+            width: 30px;
+            display: flex;
+            color: red;
+            justify-content: center;
+        }
+
+        .grade {
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="return">&lt;</div>
+    <h3>排行榜</h3>
+    <div class="ranking-list">
+        <div class="button easy">初级</div>
+        <div class="button middle">中级</div>
+        <div class="button difficult">高级</div>
+    </div>
+    <div class="content-box">
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let ranking = null
+    let difficultName = ["easy", "middle", "difficult"]
+    let nowDifficulty = localStorage.getItem('nowDifficulty')
+    let phone
+    function changeRank() {
+        ranking = null
+        $(`.active`).removeClass('active')
+        if (localStorage.getItem('session')) {
+            axios.get('http://localhost:3000/isLogin', {
+                params: {
+                    session: localStorage.getItem("session") || 'null'
+                }
+            }).then(function (res) {
+                phone = res.data[0].user_id
+                axios.get('http://localhost:3000/getRank', {
+                    params: {
+                        phone: phone,
+                        id: nowDifficulty
+                    }
+                }).then(function (res) {
+                    $(`.${difficultName[nowDifficulty]}`).addClass('active')
+                    if (res.data != false) {
+                        ranking = res.data[0].data?.substring(1, res.data[0].data.length - 1)?.split(',') || null
+                    }
+                    $(".content-box").children().remove()
+                    if (ranking) {
+                        ranking.map((item, index) => {
+                            let content = (`<div class="list"><div class="index">${++index}</div><div class="grade">${item}</div></div>`)
+                            $(".content-box").append(content)
+                        })
+                    } else {
+                        $(".content-box").append('<div>暂无数据<div>')
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else {
+            if (nowDifficulty == 0) {
+                $(".easy").addClass('active')
+                ranking = localStorage.getItem('easy')?.split(',')
+            } else if (nowDifficulty == 1) {
+                $(".middle").addClass('active')
+                ranking = localStorage.getItem('middle')?.split(',')
+            } else {
+                $(".difficult").addClass('active')
+                ranking = localStorage.getItem('difficult')?.split(',')
+            }
+            $(".content-box").children().remove()
+            if (ranking) {
+                ranking.map((item, index) => {
+                    let content = (`<div class="list"><div class="index">${++index}</div><div class="grade">${item}</div></div>`)
+                    $(".content-box").append(content)
+                })
+            } else {
+                $(".content-box").append('<div>暂无数据<div>')
+            }
+        }
+    }
+    changeRank()
+    $('.easy').click(function () {
+        nowDifficulty = 0
+        changeRank()
+    })
+    $('.middle').click(function () {
+        nowDifficulty = 1
+        changeRank()
+    })
+    $('.difficult').click(function () {
+        nowDifficulty = 2
+        changeRank()
+    })
+    $('.return').click(function () {
+        history.go(-1)
+    })
+</script>
+
+</html>

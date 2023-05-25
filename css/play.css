@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 10px 25px;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.play-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  border: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-box {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+}
+
+.content-box .cover,
+.content-box .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform .25s ease-in-out;
+}
+
+.content-box .cover {
+  background-color: green;
+  transform: rotateY(0deg);
+}
+
+.content-box .back {
+  transform: rotateY(-180deg);
+  background-size: contain;
+}
+
+.active .cover {
+  transform: rotateY(180deg);
+}
+
+.active .back {
+  transform: rotateY(0deg);
+}
+
+.mask, .difficulty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+}
+
+.mask .button, .difficulty .button {
+  padding: 5px 20px;
+  margin: 10px 0;
+  background-color: #fff;
+}
+
+.showTrue, .showDifficulty {
+  display: flex;
+}
+
+.nowDifficulty {
+  color: green;
+}
+
+.finally-grade-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.finally-grade-box .finally-grade {
+  width: 200px;
+  height: 210px;
+  padding: 15px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.finally-grade-box .finally-grade h3 {
+  text-align: center;
+}
+
+.finally-grade-box .finally-grade div {
+  margin-top: 15px;
+}
+
+.finally-grade-box .finally-grade .anew {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #000;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记忆翻牌小游戏</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <h1>记忆翻牌小游戏</h1>
+    <div class="index-box">
+        <a href="./play.html" class="button" id="start">开始游戏</a>
+        <div class="button select">难度选择</div>
+        <a href="./rankingList.html" class="button">排行榜</a>
+        <div class="button login-button">用户登录</div>
+        <div class="button login-quit">退出登录</div>
+    </div>
+    <div class="mask">
+        <div class="button elementary">初级</div>
+        <div class="button intermediate">中级</div>
+        <div class="button advanced">高级</div>
+    </div>
+    <div class="verification-login">
+        <section class="login-box">
+            <h3>验证码登录</h3>
+            <form name="verification_login">
+                <div class="input-box">手机号：<input class="phone" type="number" name="id"></div>
+                <div class="hint"></div>
+                <div class="input-box">验证码：<input type="number" name="code">
+                    <div class="verification-code">获取验证码</div>
+                </div>
+                <div class="code-hint"></div>
+            </form>
+            <div class="button-box">
+                <div class="password-button">密码登录</div>
+                <div class="verification-login-button">登录</div>
+            </div>
+        </section>
+    </div>
+    <div class="password-login">
+        <section class="login-box">
+            <h3>密码登录</h3>
+            <form name="password_login">
+                <div class="password-input-box input-box"><span class="text">手机号</span>：<input class="phone" type="number" name="id"></div>
+                <div class="password-input-box input-box"><span class="text">密码</span>：<input type="password" name="password"></div>
+            </form>
+            <div class="password-login-hint"></div>
+            <div class="button-box">
+                <div class="verification-button">验证码登录</div>
+                <div class="password-login-button">登录</div>
+            </div>
+        </section>
+    </div>
+    <div class="set-user-password">
+        <section class="set-box">
+            <h3>请设置用户名和密码</h3>
+            <form name="set">
+            <div class="input-box"><span class="text">用户名</span>：<input class="name" type="text" name="user_name"></div>
+            <div class="input-box"><span class="text">设置密码</span>：<input type="password" name="first_password"></div>
+            <div class="input-box"><span class="text">再次输入密码</span>：<input type="password" name="second_password"></div>
+            <div class="set-hint"></div>
+        </form>
+            <div class="setup-complete">完成设置</div>
+        </section>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module" src="./js/index.js"></script>
+
+</html>

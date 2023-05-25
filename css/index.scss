@@ -1,0 +1,188 @@
+$IndexColor: green;
+
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    color: $IndexColor;
+}
+
+.index-box {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .button {
+        width: 100px;
+        height: 50px;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background-color: $IndexColor;
+    }
+
+    .login-quit {
+        display: none;
+    }
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+
+    .button {
+        padding: 5px 20px;
+        margin: 10px 0;
+        background-color: #fff;
+    }
+}
+
+.showTrue {
+    display: flex;
+}
+
+.nowDifficulty {
+    color: $IndexColor;
+}
+
+.verification-login,
+.password-login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .login-box {
+        padding: 15px 10px 15px 10px;
+        background-color: #fff;
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+
+            .text {
+                width: 100px;
+                text-align-last: justify;
+            }
+
+            .verification-code {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+        }
+
+        .password-input-box {
+            margin-top: 10px;
+        }
+
+        .hint,
+        .code-hint,
+        .password-login-hint {
+            margin-left: 20px;
+            height: 20px;
+            font-size: 12px;
+            transform: scale(0.7);
+            text-align: left;
+            color: red;
+        }
+        .password-login-hint{
+            margin-left: 85px;
+        }
+
+        .button-box {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+
+            .password-button,
+            .verification-login-button,
+            .verification-button,
+            .password-login-button {
+                padding: 5px;
+                border: 1px solid #000;
+            }
+        }
+    }
+}
+
+.set-user-password {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .set-box {
+        padding: 15px 10px 15px 10px;
+        background-color: #fff;
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            margin-top: 14px;
+
+            .text {
+                width: 100px;
+                text-align-last: justify;
+            }
+        }
+
+        .setup-complete {
+            margin-top: 15px;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+        .set-hint {
+            margin-left: 85px;
+            height: 20px;
+            font-size: 12px;
+            transform: scale(0.7);
+            text-align: left;
+            color: red;
+        }
+    }
+}

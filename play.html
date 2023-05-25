@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: calc(100vw / 375*0.75);">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记忆翻牌小游戏</title>
+    <link rel="stylesheet" href="./css/play.css">
+</head>
+
+<body>
+    <header class="header-box">
+        <div class="time-box">时间:
+            <span class="time"></span>
+        </div>
+        <div class="grade-box">分数:
+            <span class="grade"></span>
+        </div>
+        <div class="steps-box">步数:
+            <span class="steps"></span>
+        </div>
+        <div class="stop">暂停</div>
+    </header>
+    <div class="play-box" id="play-box"></div>
+    <div class="mask">
+        <div class="button continue">继续游戏</div>
+        <div class="button change">更改难度</div>
+        <div class="button anew">重新开始</div>
+        <div class="button return">返回主页</div>
+    </div>
+    <div class="difficulty">
+        <div class="button elementary">初级</div>
+        <div class="button intermediate">中级</div>
+        <div class="button advanced">高级</div>
+    </div>
+    <div class="finally-grade-box">
+        <section class="finally-grade">
+            <h3>最终得分计算</h3>
+            <div>基础得分：<span class="basics-grade"></span></div>
+            <div>时间加分：<span class="time-grade"></span></div>
+            <div>步数加分：<span class="steps-grade"></span></div>
+            <div>最终得分：<span class="end-grade"></span></div>
+            <div class="anew">重新游玩</div>
+        </section>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/play.js"></script>
+
+</html>
